@@ -4,12 +4,33 @@ export default{
  output: {
 	filename: 'bundle.js',
  },
- module: {
-	rules: [{
-	test: /\.jsx?$/,
-	use: ['babel-loader']
+ devServer:{
 
-	}]
- }
+   static: {
+	directory: 'dist',
+   },
+   compress: true,
+   port: 9000,
+ },
+ module: {
+    rules: [{
+		test: /\.jsx?$/,
+		use: [{loader : 'babel-loader'}],
+
+	},
+	{
+	  test:/\.css$/,
+	  use:['css-hot-loader',],
+	},
+	{
+	  test: /\.css$/,
+	  use: ['css-hot-loader',],
+	},
+	{
+	  test: /\.(png|jpg|gif|svg|mp3)$/,
+	  use: [{loader : 'file-loader'}],
+	},
+       ],
+     },
 
 }

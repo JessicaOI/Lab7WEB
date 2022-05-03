@@ -90,13 +90,163 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/Jugador.jsx":
+/*!************************************!*\
+  !*** ./src/components/Jugador.jsx ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _public_img_vaderQ_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../public/img/vaderQ.jpg */ \"./public/img/vaderQ.jpg\");\n/* harmony import */ var _public_img_vaderAb_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../public/img/vaderAb.jpg */ \"./public/img/vaderAb.jpg\");\n/* harmony import */ var _public_img_vaderAr_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../public/img/vaderAr.jpg */ \"./public/img/vaderAr.jpg\");\n/* harmony import */ var _public_img_vaderD_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../public/img/vaderD.jpg */ \"./public/img/vaderD.jpg\");\n/* harmony import */ var _public_img_vaderI_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/img/vaderI.jpg */ \"./public/img/vaderI.jpg\");\n/* harmony import */ var _public_img_ganar_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../public/img/ganar.jpg */ \"./public/img/ganar.jpg\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);\n\n\n\n\n\n\n\n\nconst Jugador = ({\n  state\n}) => {\n  const [Imagen, setImagen] = (0,react__WEBPACK_IMPORTED_MODULE_6__.useState)(null); //logica para determinar la animacion del personaje\n\n  (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {\n    switch (state) {\n      case 'Normal':\n        setImagen(_public_img_vaderQ_jpg__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n        break;\n\n      case 'Abajo':\n        setImagen(_public_img_vaderAb_jpg__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n        break;\n\n      case 'Arriba':\n        setImagen(_public_img_vaderAr_jpg__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n        break;\n\n      case 'Derecha':\n        setImagen(_public_img_vaderD_jpg__WEBPACK_IMPORTED_MODULE_3__[\"default\"]);\n        break;\n\n      case 'Izquierda':\n        setImagen(_public_img_vaderI_jpg__WEBPACK_IMPORTED_MODULE_4__[\"default\"]);\n        break;\n\n      case 'Ganar':\n        setImagen(_public_img_ganar_jpg__WEBPACK_IMPORTED_MODULE_5__[\"default\"]);\n        break;\n    }\n  }, [state]);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement(\"div\", {\n    css: {\n      backgroundImage: `url(${Imagen})`,\n      height: '50px',\n      width: '50px',\n      backgroundSize: 'cover'\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Jugador);\n\n//# sourceURL=webpack://weblab7/./src/components/Jugador.jsx?");
+
+/***/ }),
+
+/***/ "./src/components/Laberinto.jsx":
+/*!**************************************!*\
+  !*** ./src/components/Laberinto.jsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _public_audios_cancion_mp3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../public/audios/cancion.mp3 */ \"./public/audios/cancion.mp3\");\n/* harmony import */ var _public_img_piso_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../public/img/piso.jpg */ \"./public/img/piso.jpg\");\n/* harmony import */ var _public_img_fondo_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../public/img/fondo.jpg */ \"./public/img/fondo.jpg\");\n/* harmony import */ var _public_img_pared_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/img/pared.png */ \"./public/img/pared.png\");\n/* harmony import */ var _public_img_luke_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../public/img/luke.jpg */ \"./public/img/luke.jpg\");\n/* harmony import */ var _src_components_Jugador_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../src/components/Jugador.jsx */ \"./src/components/Jugador.jsx\");\n\n\n\n\n\n\n\n\nconst Laberinto = ({\n  setGanar\n}) => {\n  const w = 5;\n  const h = 5;\n  const [laberinto, setLaberinto] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);\n  const [statej, setState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Normal');\n  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(h);\n  const [width, setWidth] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(w);\n  const musica = new Audio(_public_audios_cancion_mp3__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n  let victorycon = false;\n\n  const loadMaze = async () => {\n    let fet = \"https://maze.juanelcaballo.club/?type=json&w=\" + width + \"&h=\" + height;\n    const response = await fetch(fet).then(response => {\n      return response.json();\n    }).then(responseInJSON => {\n      return responseInJSON;\n    });\n    setLaberinto([...response]);\n  };\n\n  const dimensionWidth = () => {\n    const widthValue = document.getElementById('ancho').value;\n    const newWidth = parseInt(widthValue);\n    setWidth(newWidth);\n  };\n\n  const dimensionHeight = () => {\n    const heightValue = document.getElementById('alto').value;\n    const newHeight = parseInt(heightValue);\n    setHeight(newHeight);\n  };\n\n  const getlistener = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(event => {\n    if (!victorycon) {\n      const llave = event.key;\n      setLaberinto(oldState => {\n        let x = oldState.findIndex(row => row.indexOf('p') > -1);\n        let y = oldState[x].indexOf('p');\n        const laberinto = [...oldState];\n\n        switch (llave) {\n          case \"a\":\n            setState('Izquierda');\n\n            if (laberinto[x][y - 1] === ' ') {\n              laberinto[x][y] = \" \";\n              laberinto[x][y - 1] = 'p';\n              y = y - 1;\n              return laberinto;\n            } else if (laberinto[x][y - 1] === 'g') {\n              laberinto[x][y] = \" \";\n              laberinto[x][y - 1] = 'p';\n              y = y - 1;\n              setState('Ganar');\n              victorycon = true;\n              setTimeout(() => {\n                setGanar(true);\n              }, 2000);\n            }\n\n            break;\n\n          case \"d\":\n            setState('Derecha');\n\n            if (laberinto[x][y + 1] === ' ') {\n              laberinto[x][y] = \" \";\n              laberinto[x][y + 1] = 'p';\n              y = y + 1;\n              return laberinto;\n            } else if (laberinto[x][y + 1] === 'g') {\n              laberinto[x][y] = \" \";\n              laberinto[x][y + 1] = 'p';\n              y = y + 1;\n              setState('Ganar');\n              victorycon = true;\n              setTimeout(() => {\n                setGanar(true);\n              }, 2000);\n            }\n\n            break;\n\n          case \"w\":\n            setState('Arriba');\n\n            if (laberinto[x - 1][y] === ' ') {\n              laberinto[x][y] = \" \";\n              laberinto[x - 1][y] = 'p';\n              x = x - 1;\n              return laberinto;\n            } else if (laberinto[x - 1][y] === 'g') {\n              laberinto[x][y] = \" \";\n              laberinto[x - 1][y] = 'p';\n              x = x - 1;\n              setState('Ganar');\n              victorycon = true;\n              setTimeout(() => {\n                setGanar(true);\n              }, 2000);\n            }\n\n            break;\n\n          case \"s\":\n            setState('Abajo');\n\n            if (laberinto[x + 1][y] === ' ') {\n              laberinto[x][y] = \" \";\n              laberinto[x + 1][y] = 'p';\n              x = x + 1;\n              return laberinto;\n            } else if (laberinto[x + 1][y] === 'g') {\n              laberinto[x][y] = \" \";\n              laberinto[x + 1][y] = 'p';\n              x = x + 1;\n              setState('Ganar');\n              victorycon = true;\n              setTimeout(() => {\n                setGanar(true);\n              }, 2000);\n            }\n\n            break;\n        }\n\n        return laberinto;\n      });\n    }\n  }, []);\n  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {\n    loadMaze();\n    document.addEventListener(\"keydown\", getlistener);\n    musica.play();\n    musica.loop = true;\n    musica.volume = 0.4;\n  }, []);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    css: {\n      width: '100%',\n      height: '100%',\n      backgroundImage: `url(${_public_img_fondo_jpg__WEBPACK_IMPORTED_MODULE_3__[\"default\"]})`,\n      display: 'flex',\n      flexDirection: 'column',\n      alignItems: 'center',\n      justifyContent: 'center',\n      overflowY: 'scroll',\n      overflowX: 'hidden'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    css: {\n      color: 'white',\n      textAlign: 'center',\n      width: '100%',\n      paddingTop: '10px'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Sonic\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    css: {\n      display: 'flex',\n      flexDirection: 'row',\n      justifyContent: 'center',\n      border: '0px',\n      paddingBottom: '10px'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"Ancho:\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"input\", {\n    type: \"number\",\n    id: \"ancho\",\n    name: \"quantity\",\n    min: \"3\",\n    max: \"10\",\n    placeholder: width\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"input\", {\n    value: \"Guardar\",\n    type: \"submit\",\n    onClick: dimensionWidth\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"Alto:\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"input\", {\n    type: \"number\",\n    id: \"alto\",\n    name: \"quantity\",\n    min: \"3\",\n    max: \"10\",\n    placeholder: height\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"input\", {\n    value: \"Guardar\",\n    type: \"submit\",\n    onClick: dimensionHeight\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"br\", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"br\", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", {\n    onClick: loadMaze\n  }, \"Recargar laberinto\")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    css: {\n      display: 'inline-block',\n      flexDirection: 'column',\n      alignItems: 'center',\n      justifyContent: 'center',\n      width: '80vw',\n      height: '500px',\n      padding: '20px'\n    }\n  }, laberinto.map((row, rowIndex) => {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n      llave: rowIndex,\n      css: {\n        display: 'flex',\n        flexDirection: 'row',\n        justifyContent: 'center'\n      }\n    }, row.map((column, columnIndex) => {\n      if (column === '+' || column === '-' || column === '|') {\n        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n          llave: columnIndex,\n          css: {\n            backgroundImage: `url(${_public_img_pared_png__WEBPACK_IMPORTED_MODULE_4__[\"default\"]})`,\n            height: '50px',\n            width: '50px',\n            backgroundSize: 'contain'\n          }\n        });\n      }\n\n      if (column === ' ') {\n        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n          llave: columnIndex,\n          css: {\n            backgroundImage: `url(${_public_img_piso_jpg__WEBPACK_IMPORTED_MODULE_2__[\"default\"]})`,\n            height: '50px',\n            width: '50px',\n            backgroundSize: 'contain'\n          }\n        });\n      }\n\n      if (column === 'p') {\n        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_src_components_Jugador_jsx__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n          llave: 'player',\n          state: statej\n        });\n      }\n\n      if (column === 'g') {\n        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n          llave: columnIndex,\n          css: {\n            backgroundImage: `url(${_public_img_luke_jpg__WEBPACK_IMPORTED_MODULE_5__[\"default\"]})`,\n            height: '50px',\n            width: '50px',\n            backgroundSize: 'contain'\n          }\n        });\n      } else {\n        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n          llave: columnIndex,\n          css: {\n            height: '50px',\n            width: '50px',\n            border: '10px'\n          }\n        });\n      }\n    }));\n  })));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Laberinto);\n\n//# sourceURL=webpack://weblab7/./src/components/Laberinto.jsx?");
+
+/***/ }),
+
+/***/ "./public/audios/cancion.mp3":
+/*!***********************************!*\
+  !*** ./public/audios/cancion.mp3 ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"8289bfd997cb77a4b02174ddb2bcbc23.mp3\");\n\n//# sourceURL=webpack://weblab7/./public/audios/cancion.mp3?");
+
+/***/ }),
+
+/***/ "./public/img/fondo.jpg":
+/*!******************************!*\
+  !*** ./public/img/fondo.jpg ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"9e2b9654636715252fd61e1ff5aa2993.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/fondo.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/ganar.jpg":
+/*!******************************!*\
+  !*** ./public/img/ganar.jpg ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"7c61c152f56665b6ef86ed8881e65fdc.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/ganar.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/luke.jpg":
+/*!*****************************!*\
+  !*** ./public/img/luke.jpg ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"9dc35533bc0f4952d214325dcf69e17e.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/luke.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/pared.png":
+/*!******************************!*\
+  !*** ./public/img/pared.png ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"7a8e1ce7a678091a0e8654c9daa28f10.png\");\n\n//# sourceURL=webpack://weblab7/./public/img/pared.png?");
+
+/***/ }),
+
+/***/ "./public/img/piso.jpg":
+/*!*****************************!*\
+  !*** ./public/img/piso.jpg ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"6ac741153c87c8f4ee4e0d528a210c5e.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/piso.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/start.jpg":
+/*!******************************!*\
+  !*** ./public/img/start.jpg ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"9d5d5a0ad94ec0bd599b471026039338.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/start.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/vaderAb.jpg":
+/*!********************************!*\
+  !*** ./public/img/vaderAb.jpg ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"df0df1a1eeed19bf173a5ec994d55c60.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/vaderAb.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/vaderAr.jpg":
+/*!********************************!*\
+  !*** ./public/img/vaderAr.jpg ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"eee9b0d625a3c702f0862e36f1f6cd6a.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/vaderAr.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/vaderD.jpg":
+/*!*******************************!*\
+  !*** ./public/img/vaderD.jpg ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"80fdccf743d431bcd71e65edf3453beb.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/vaderD.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/vaderI.jpg":
+/*!*******************************!*\
+  !*** ./public/img/vaderI.jpg ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"220150374fffc59249fc1f0f839b793a.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/vaderI.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/vaderQ.jpg":
+/*!*******************************!*\
+  !*** ./public/img/vaderQ.jpg ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"e8709d6e3bee18403a865a9ca487d2a5.jpg\");\n\n//# sourceURL=webpack://weblab7/./public/img/vaderQ.jpg?");
+
+/***/ }),
+
+/***/ "./public/img/victoria.png":
+/*!*********************************!*\
+  !*** ./public/img/victoria.png ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"ebbd232aaac81f94b593653bd89518d4.png\");\n\n//# sourceURL=webpack://weblab7/./public/img/victoria.png?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n/* harmony import */ var _components_Header_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Header.jsx */ \"./src/components/Header.jsx\");\n\n\n\n\nconst App = () => {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Header_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    title: \"hello react\"\n  }));\n};\n\nconst root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById(\"root\"));\nroot.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null));\n\n//# sourceURL=webpack://weblab7/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _components_Header_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Header.jsx */ \"./src/components/Header.jsx\");\n/* harmony import */ var _components_Laberinto_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Laberinto.jsx */ \"./src/components/Laberinto.jsx\");\n/* harmony import */ var _public_img_start_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../public/img/start.jpg */ \"./public/img/start.jpg\");\n/* harmony import */ var _public_img_victoria_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../public/img/victoria.png */ \"./public/img/victoria.png\");\n/* harmony import */ var _public_img_fondo_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../public/img/fondo.jpg */ \"./public/img/fondo.jpg\");\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom/client */ \"./node_modules/react-dom/client.js\");\n //import ReactDOM from 'react-dom/client';\n\n\n\n\n\n //import { createRoot } from 'react-dom/cjs/react-dom.production.min';\n//import * as ReactDOM from \"react-dom/client\"\n\n\n\nconst App = () => {\n  const [play, setPlay] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);\n  const [ganar, setGanar] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    css: {\n      width: '100vw',\n      height: '100vh'\n    }\n  }, ganar ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    css: {\n      width: '100%',\n      height: '100%',\n      backgroundImage: `url(${_public_img_fondo_jpg__WEBPACK_IMPORTED_MODULE_5__[\"default\"]})`,\n      display: 'flex',\n      flexDirection: 'column',\n      alignItems: 'center',\n      justifyContent: 'center'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    css: {\n      backgroundImage: `url(${_public_img_victoria_png__WEBPACK_IMPORTED_MODULE_4__[\"default\"]})`,\n      height: '650px',\n      width: '700px',\n      backgroundSize: 'cover',\n      marginTop: '10px'\n    }\n  })) : play ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    css: {\n      height: '100vh',\n      width: '100vw'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Laberinto_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    setGanar: setGanar,\n    ganar: ganar\n  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    css: {\n      width: '100%',\n      height: '100%',\n      backgroundImage: `url(${_public_img_fondo_jpg__WEBPACK_IMPORTED_MODULE_5__[\"default\"]})`,\n      display: 'flex',\n      flexDirection: 'column',\n      alignItems: 'center',\n      justifyContent: 'center'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"img\", {\n    src: _public_img_start_jpg__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n    alt: \"Start\",\n    onClick: () => {\n      setPlay(!play);\n    }\n  })));\n};\n\nconst container = document.getElementById('app');\nconst root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_6__.createRoot)(container);\nroot.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, {\n  tab: \"home\"\n}));\n\n//# sourceURL=webpack://weblab7/./src/index.js?");
 
 /***/ })
 
@@ -154,6 +304,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -177,6 +339,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
