@@ -39,6 +39,11 @@ const Laberinto = ({setGanar}) => {
         const nuevaAn = parseInt(valorAn)
         setAncho(nuevaAn)
     }
+
+    const getAmbos = () =>{
+        getAlto()
+        getAncho()
+    }
     
 
     const getlistener = useCallback ((event) => {
@@ -70,7 +75,7 @@ const Laberinto = ({setGanar}) => {
                             y = y-1
                             setJugador('ganar')
                             finish = true
-                            setTimeout(() => {setGanar(true)}, 2000)
+                            setTimeout(() => {setGanar(true); sound.pause();}, 2000)
                             
                         }
                         
@@ -89,7 +94,7 @@ const Laberinto = ({setGanar}) => {
                             y = y+1
                             setJugador('ganar')
                             finish = true
-                            setTimeout(() => {setGanar(true)}, 2000)
+                            setTimeout(() => {setGanar(true); musica.pause();}, 2000)
                             
                         }
                         break;
@@ -107,7 +112,7 @@ const Laberinto = ({setGanar}) => {
                             x = x-1
                             setJugador('ganar')
                             finish = true
-                            setTimeout(() => {setGanar(true)}, 2000)
+                            setTimeout(() => {setGanar(true); musica.pause();}, 2000)
                             
                         }
                         break;
@@ -125,7 +130,7 @@ const Laberinto = ({setGanar}) => {
                             x = x+1
                             setJugador('ganar')
                             finish = true
-                            setTimeout(() => {setGanar(true);}, 2000)
+                            setTimeout(() => {setGanar(true); musica.pause();}, 2000)
                             
                         }
                         break;
@@ -174,17 +179,15 @@ const Laberinto = ({setGanar}) => {
 
             <h4>Ancho:</h4>
                 <input type="number" id="ancho" name="quantity" min="3" max="10" placeholder={ancho}></input>
-                <input value='Guardar' type="submit" onClick={getAncho} ></input>
-
                 <div css ={{ 
                     paddingLeft: '20px'}}> 
                 <h4>Alto:</h4>
                 </div>
 
                 <input type="number" id="alto" name="quantity" min="3" max="10" placeholder={alto}></input>
-                <input value='Guardar' type="submit" onClick={getAlto}></input>  
                 <br/>
                 <br/>
+                <button onClick={getAmbos}>Guardar Valores</button>
                 <button onClick={loadLaberinto}>Recargar laberinto</button>
             </div>
             
